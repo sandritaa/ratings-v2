@@ -34,7 +34,7 @@ class Movie(db.Model):
     poster_path = db.Column(db.String)
 
     def __repr__(self):
-        return f"<User user_id={self.movie_id} title={self.title}>"
+        return f"<Movie movie_id={self.movie_id} title={self.title}>"
 
 # create Rating class
 
@@ -42,15 +42,15 @@ class Movie(db.Model):
 class Rating(db.Model):
     """A rating."""
 
-    __tablename__ = "Ratings"
+    __tablename__ = "ratings"
 
     rating_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    score = db.Column(db.Interger)
-    movie_id = db.Column(db.Interger, db.ForeignKey('movies.movie_id'))
-    user_id = db.Column(db.Interger), db.ForeignKey('users.user_id')
+    score = db.Column(db.Integer)
+    movie_id = db.Column(db.Integer, db.ForeignKey('movies.movie_id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
 
     def __repr__(self):
-        return f"<User user_id={self.rating_id} title={self.score}>"
+        return f"<Rating rating_id={self.rating_id} title={self.score}>"
 
 
 def connect_to_db(flask_app, db_uri="postgresql:///ratings", echo=True):
