@@ -1,8 +1,9 @@
 """Models for movie ratings app."""
 
+# import sqlalchemy from the flask_sqlalchemy module
 from flask_sqlalchemy import SQLAlchemy
 
-# from datetime import datetime
+# create an object from the class sqlalchemy
 db = SQLAlchemy()
 
 # create User class
@@ -11,14 +12,18 @@ db = SQLAlchemy()
 class User(db.Model):
     """A user."""
 
+    # create table name
     __tablename__ = "users"
 
+    # create atributes for the table users
     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     email = db.Column(db.String, unique=True)
     password = db.Column(db.String)
 
+    # tie table users to ratings table in python
     ratings = db.relationship("Rating", back_populates="user")
 
+    # return from the users table user_id and email
     def __repr__(self):
         return f"<User user_id={self.user_id} email={self.email}>"
 
@@ -28,6 +33,7 @@ class User(db.Model):
 class Movie(db.Model):
     """A movie."""
 
+    # create table name
     __tablename__ = "movies"
 
     movie_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
