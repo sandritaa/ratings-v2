@@ -18,6 +18,11 @@ def create_movie(title, overview, release_data, poster_path):
     return movie
 
 
+def get_movies():
+
+    return Movie.query.all()
+
+
 def create_rating(score, user, movie):
 
     rating = Rating(score=score, user=user, movie=movie)

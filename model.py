@@ -1,12 +1,10 @@
 """Models for movie ratings app."""
 
-# import sqlalchemy from the flask_sqlalchemy module
+# import sqlalchemy class from the flask_sqlalchemy module
 from flask_sqlalchemy import SQLAlchemy
 
 # create an object from the class sqlalchemy
 db = SQLAlchemy()
-
-# create User class
 
 
 class User(db.Model):
